@@ -656,7 +656,7 @@
         <div class="pricing-price">Gratuit</div>
         <div class="pricing-desc">Pour tester et démarrer</div>
         <ul class="pricing-features">
-          <li>100 commandes / mois</li>
+          <li>50 commandes / mois</li>
           <li>API REST complète</li>
           <li>Dashboard basique</li>
           <li>Support email</li>
@@ -667,7 +667,7 @@
       <div class="pricing-card featured fade-in">
         <div class="pricing-badge">⭐ Plus populaire</div>
         <div class="pricing-plan">Pro</div>
-        <div class="pricing-price"><sup>€</sup><span id="pro-price">99</span><span id="pro-period">/mois</span></div>
+        <div class="pricing-price"><sup>€</sup><span id="pro-price">89</span><span id="pro-period">/mois</span></div>
         <div class="pricing-desc" id="pro-desc">Pour les marques en croissance</div>
         <ul class="pricing-features">
           <li>1 000 commandes / mois</li>
@@ -701,7 +701,7 @@
 <section id="waitlist" class="waitlist">
   <div class="container fade-in">
     <h2>Prêt à protéger votre boutique ?</h2>
-    <p>Créez votre compte en 30 secondes. Intégrez l'API en 5 minutes. Gratuit jusqu'à 100 commandes/mois.</p>
+    <p>Créez votre compte en 30 secondes. Intégrez l'API en 5 minutes. Gratuit jusqu'à 50 commandes/mois.</p>
     <div class="waitlist-counter" id="waitlistCounter">
       <span>🔥</span> <span id="counterNum">...</span> e-commerçants déjà inscrits
     </div>
@@ -777,7 +777,7 @@
           <span>+</span>
         </button>
         <div class="faq-answer">
-          <p>Absolument. Le plan Starter est gratuit à vie jusqu'à 100 commandes par mois. Vous pouvez aussi tester notre démo interactive sans créer de compte — elle simule un flux complet de commande et d'unboxing.</p>
+          <p>Absolument. Le plan Starter est gratuit à vie jusqu'à 50 commandes par mois. Vous pouvez aussi tester notre démo interactive sans créer de compte — elle simule un flux complet de commande et d'unboxing.</p>
         </div>
       </div>
     </div>
@@ -916,9 +916,9 @@ function setPricing(mode) {
   document.getElementById('btn-monthly').style.color = isAnnual ? '#64748b' : 'white';
   document.getElementById('btn-annual').style.background = isAnnual ? '#4f46e5' : 'transparent';
   document.getElementById('btn-annual').style.color = isAnnual ? 'white' : '#64748b';
-  document.getElementById('pro-price').textContent = isAnnual ? '79' : '99';
+  document.getElementById('pro-price').textContent = isAnnual ? '74' : '89';
   document.getElementById('pro-period').textContent = isAnnual ? '/mois' : '/mois';
-  document.getElementById('pro-desc').textContent = isAnnual ? 'Facturé 949€/an — économisez 239€' : 'Pour les marques en croissance';
+  document.getElementById('pro-desc').textContent = isAnnual ? 'Facturé 890€/an — économisez 178€' : 'Pour les marques en croissance';
 }
 
 // Legacy waitlist form (kept for backwards compat)

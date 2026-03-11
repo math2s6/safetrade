@@ -12,7 +12,7 @@ router.get('/overview', async (req, res) => {
     db.get("SELECT COUNT(*) as c FROM b2b_orders WHERE company_id = ? AND status = 'completed'", req.company.id),
     db.get("SELECT COUNT(*) as c FROM b2b_orders WHERE company_id = ? AND status='unboxing_submitted'", req.company.id),
   ]);
-  const planLimits = { starter: 100, pro: 1000, enterprise: null };
+  const planLimits = { starter: 50, pro: 1000, enterprise: null };
   const stats = {
     total_orders: company.total_orders,
     monthly_used: company.monthly_orders_used,

@@ -80,7 +80,7 @@ body{font-family:-apple-system,sans-serif;background:#f1f5f9;padding:24px}
 // All routes below require API key
 router.use(requireApiKey);
 
-const PLAN_LIMITS = { starter: 100, pro: 1000, enterprise: Infinity };
+const PLAN_LIMITS = { starter: 50, pro: 1000, enterprise: Infinity };
 
 router.post('/orders', async (req, res, next) => {
   try {
@@ -133,6 +133,15 @@ router.get('/orders', async (req, res) => {
   const orders = await db.all(`SELECT * FROM b2b_orders WHERE ${where} ORDER BY created_at DESC LIMIT ? OFFSET ?`, ...params, parseInt(limit), offset);
   const total = await db.get(`SELECT COUNT(*) as c FROM b2b_orders WHERE ${where}`, ...params);
   res.json({ orders, total: total.c, page: parseInt(page) });
+});
+
+router.get('/orders/:id/qr', async (req, res) => {
+  const order = await db.get('SELECT verification_code FROM b2b_orders WHERE id = ? AND company_id = ?', req.params.id, req.company.id);
+  if (!order) return res.status(404).json({ error: 'Commande introuvable' });
+  const host = `${req.protocol}://${req.get('host')}`;
+  const unboxingUrl = `${host}/unboxing-customer.html?code=${order.verification_code}&order=${req.params.id}`;
+  const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(unboxingUrl)}`;
+  res.json({ qr_image_url: qrApiUrl, unboxing_url: unboxingUrl });
 });
 
 router.get('/orders/:id', async (req, res) => {

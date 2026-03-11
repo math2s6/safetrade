@@ -182,6 +182,9 @@ CREATE TABLE IF NOT EXISTS companies (
   total_orders INTEGER NOT NULL DEFAULT 0,
   total_fraud_prevented INTEGER NOT NULL DEFAULT 0,
   webhook_url TEXT,
+  stripe_customer_id TEXT,
+  stripe_subscription_id TEXT,
+  stripe_status TEXT,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
