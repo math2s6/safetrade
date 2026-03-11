@@ -4,14 +4,26 @@ let transporter;
 
 async function getTransporter() {
   if (transporter) return transporter;
-  const testAccount = await nodemailer.createTestAccount();
-  transporter = nodemailer.createTransport({
-    host: 'smtp.ethereal.email',
-    port: 587,
-    secure: false,
-    auth: { user: testAccount.user, pass: testAccount.pass }
-  });
-  console.log('📧 Email test account:', testAccount.user);
+
+  if (process.env.SMTP_HOST) {
+    transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: parseInt(process.env.SMTP_PORT || '587'),
+      secure: process.env.SMTP_SECURE === 'true',
+      auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS }
+    });
+    console.log(`📧 SMTP configuré: ${process.env.SMTP_HOST}`);
+  } else {
+    const testAccount = await nodemailer.createTestAccount();
+    transporter = nodemailer.createTransport({
+      host: 'smtp.ethereal.email',
+      port: 587,
+      secure: false,
+      auth: { user: testAccount.user, pass: testAccount.pass }
+    });
+    console.log('📧 Email de test (Ethereal):', testAccount.user);
+  }
+
   return transporter;
 }
 
@@ -19,7 +31,7 @@ async function sendEmail(to, subject, html) {
   try {
     const t = await getTransporter();
     const info = await t.sendMail({
-      from: '"SafeTrade" <noreply@safetrade.io>',
+      from: process.env.SMTP_FROM || '"SafeTrade" <noreply@safetrade.io>',
       to, subject, html
     });
     const previewUrl = nodemailer.getTestMessageUrl(info);
@@ -68,7 +80,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <a href="${unboxingUrl}" class="btn">🎥 Faire mon unboxing sécurisé →</a>
     <p style="color:#64748b;font-size:14px;">Ce lien est valable 48h après réception.</p>
   </div>
-  <div class="footer">Propulsé par <strong>SafeTrade</strong> — <a href="http://localhost:3000" style="color:#4f46e5">safetrade.io</a></div>
+  <div class="footer">Propulsé par <strong>SafeTrade</strong> — <a href="${process.env.APP_URL || 'https://safetrade.io'}" style="color:#4f46e5">safetrade.io</a></div>
 </div></body></html>`;
   return sendEmail(customerEmail, `🛡️ Votre code unboxing pour "${productName}" — ${companyName}`, html);
 }
