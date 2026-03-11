@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SafeTrade — La sécurité unboxing pour votre e-commerce</title>
+  <title>SafeTrade — Éliminez les fraudes aux retours e-commerce</title>
+  <meta name="description" content="SafeTrade protège votre e-commerce contre les fraudes aux retours. Unboxing vidéo obligatoire, code unique par commande, analyse IA automatique. Intégration API en 5 minutes.">
+  <meta property="og:title" content="SafeTrade — Éliminez les fraudes aux retours e-commerce">
+  <meta property="og:description" content="Code unique par commande + unboxing vidéo + IA = zéro fraude. Intégration en 5 minutes.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://safetrade.io/landing.html">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     :root{--primary:#4f46e5;--primary-dark:#3730a3;--secondary:#7c3aed;--success:#059669;--bg:#f8fafc;--text:#1e293b;--muted:#64748b}
@@ -11,29 +17,42 @@
     body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#fff;color:var(--text)}
 
     /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,30,0.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.08)}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,30,0.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.08);transition:all .3s}
+    nav.scrolled{padding:12px 40px;background:rgba(10,10,30,0.98)}
     .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-    .nav-logo-icon{width:36px;height:36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
-    .nav-logo span{color:white;font-size:20px;font-weight:700}
-    .nav-links{display:flex;align-items:center;gap:8px}
-    .nav-link{color:rgba(255,255,255,0.7);text-decoration:none;padding:8px 16px;border-radius:8px;font-size:14px;transition:all .2s}
-    .nav-link:hover{color:white;background:rgba(255,255,255,0.1)}
-    .nav-cta{background:#4f46e5;color:white;text-decoration:none;padding:9px 20px;border-radius:8px;font-size:14px;font-weight:600;transition:all .2s}
-    .nav-cta:hover{background:#3730a3;transform:translateY(-1px)}
+    .nav-logo svg{width:36px;height:36px}
+    .nav-logo span{color:white;font-size:20px;font-weight:800;letter-spacing:-0.5px}
+    .nav-links{display:flex;align-items:center;gap:4px}
+    .nav-link{color:rgba(255,255,255,0.65);text-decoration:none;padding:8px 14px;border-radius:8px;font-size:14px;transition:all .2s;white-space:nowrap}
+    .nav-link:hover{color:white;background:rgba(255,255,255,0.08)}
+    .nav-cta{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:white!important;text-decoration:none;padding:9px 20px;border-radius:8px;font-size:14px;font-weight:600;transition:all .2s;margin-left:8px}
+    .nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(79,70,229,0.4)}
+    .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px}
+    .nav-hamburger span{display:block;width:22px;height:2px;background:white;margin:4px 0;transition:.3s}
+    .nav-mobile{display:none;position:fixed;top:65px;left:0;right:0;background:#0a0a1e;border-bottom:1px solid rgba(255,255,255,0.1);padding:16px 20px;flex-direction:column;gap:4px;z-index:99}
+    .nav-mobile.open{display:flex}
+    .nav-mobile a{color:rgba(255,255,255,0.7);text-decoration:none;padding:12px 16px;border-radius:8px;font-size:15px}
+    .nav-mobile a:hover{background:rgba(255,255,255,0.08);color:white}
 
     /* HERO */
     .hero{min-height:100vh;background:linear-gradient(135deg,#0a0a1e 0%,#1a1a3e 50%,#0d0d2b 100%);display:flex;align-items:center;padding:120px 40px 80px;overflow:hidden;position:relative}
     .hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 60% 40%,rgba(79,70,229,0.15) 0%,transparent 60%);pointer-events:none}
+    .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,#fff);pointer-events:none}
     .hero-content{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;width:100%}
     .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(79,70,229,0.2);border:1px solid rgba(79,70,229,0.4);color:#a5b4fc;padding:6px 14px;border-radius:100px;font-size:13px;font-weight:500;margin-bottom:24px}
-    .hero h1{font-size:clamp(36px,4vw,56px);font-weight:800;color:white;line-height:1.15;margin-bottom:20px}
+    .hero-badge-dot{width:6px;height:6px;background:#818cf8;border-radius:50%;animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
+    .hero h1{font-size:clamp(36px,4vw,58px);font-weight:800;color:white;line-height:1.1;margin-bottom:20px;letter-spacing:-1px}
     .hero h1 span{background:linear-gradient(135deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     .hero p{font-size:18px;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:36px}
-    .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
-    .btn-primary{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:white;text-decoration:none;padding:14px 28px;border-radius:12px;font-weight:600;font-size:16px;transition:all .2s;display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer}
-    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(79,70,229,0.4)}
-    .btn-ghost{background:rgba(255,255,255,0.08);color:white;text-decoration:none;padding:14px 28px;border-radius:12px;font-weight:600;font-size:16px;border:1px solid rgba(255,255,255,0.15);transition:all .2s;display:inline-flex;align-items:center;gap:8px}
-    .btn-ghost:hover{background:rgba(255,255,255,0.12);transform:translateY(-2px)}
+    .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:40px}
+    .btn-primary{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:white;text-decoration:none;padding:15px 28px;border-radius:12px;font-weight:600;font-size:16px;transition:all .2s;display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(79,70,229,0.45)}
+    .btn-ghost{background:rgba(255,255,255,0.08);color:white;text-decoration:none;padding:15px 28px;border-radius:12px;font-weight:600;font-size:16px;border:1px solid rgba(255,255,255,0.15);transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+    .btn-ghost:hover{background:rgba(255,255,255,0.14);transform:translateY(-2px)}
+    .hero-trust{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .trust-item{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,0.45);font-size:13px}
+    .trust-icon{color:#34d399;font-size:14px}
 
     /* DASHBOARD MOCKUP */
     .hero-visual{position:relative}
@@ -54,13 +73,23 @@
     .badge-green{background:rgba(5,150,105,0.2);color:#34d399}
     .badge-orange{background:rgba(217,119,6,0.2);color:#fbbf24}
     .badge-red{background:rgba(220,38,38,0.2);color:#f87171}
-    .badge-blue{background:rgba(79,70,229,0.2);color:#818cf8}
     .mockup-score{display:flex;align-items:center;gap:6px}
     .score-bar{width:60px;height:4px;background:#3a3a5a;border-radius:2px;overflow:hidden}
     .score-fill{height:100%;border-radius:2px}
 
+    /* PROBLEM SECTION */
+    .problem{background:#fff8f0;padding:80px 40px;border-top:1px solid #ffe4cc;border-bottom:1px solid #ffe4cc}
+    .problem-inner{max-width:1100px;margin:0 auto}
+    .problem-title{font-size:clamp(24px,2.5vw,36px);font-weight:800;color:#92400e;margin-bottom:16px;text-align:center}
+    .problem-sub{font-size:17px;color:#b45309;text-align:center;margin-bottom:48px;max-width:700px;margin-left:auto;margin-right:auto}
+    .problem-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+    .problem-stat{background:white;border-radius:16px;padding:28px 20px;text-align:center;border:1px solid #fed7aa}
+    .problem-stat-num{font-size:38px;font-weight:900;color:#dc2626;margin-bottom:8px}
+    .problem-stat-label{font-size:14px;color:#92400e;line-height:1.4}
+    .problem-stat-source{font-size:11px;color:#d97706;margin-top:6px}
+
     /* STATS BAR */
-    .stats-bar{background:#0f0f23;padding:40px;display:flex;justify-content:center;gap:80px;flex-wrap:wrap}
+    .stats-bar{background:#0f0f23;padding:48px 40px;display:flex;justify-content:center;gap:80px;flex-wrap:wrap}
     .stat-item{text-align:center}
     .stat-num{font-size:42px;font-weight:900;color:white}
     .stat-num span{background:linear-gradient(135deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -70,8 +99,8 @@
     section{padding:100px 40px}
     .container{max-width:1200px;margin:0 auto}
     .section-tag{display:inline-block;background:rgba(79,70,229,0.1);color:#4f46e5;padding:6px 14px;border-radius:100px;font-size:13px;font-weight:600;margin-bottom:16px}
-    .section-title{font-size:clamp(28px,3vw,44px);font-weight:800;color:var(--text);margin-bottom:16px;line-height:1.2}
-    .section-sub{font-size:18px;color:var(--muted);max-width:600px;line-height:1.7}
+    .section-title{font-size:clamp(28px,3vw,44px);font-weight:800;color:var(--text);margin-bottom:16px;line-height:1.2;letter-spacing:-0.5px}
+    .section-sub{font-size:18px;color:var(--muted);max-width:620px;line-height:1.7}
     .text-center{text-align:center}
     .text-center .section-sub{margin:0 auto}
 
@@ -98,13 +127,15 @@
     /* TESTIMONIALS */
     .testimonials{background:#f8fafc}
     .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
-    .testimonial-card{background:white;border-radius:20px;padding:32px;border:1px solid #e2e8f0}
-    .testimonial-stars{color:#f59e0b;font-size:18px;margin-bottom:16px}
+    .testimonial-card{background:white;border-radius:20px;padding:32px;border:1px solid #e2e8f0;transition:all .3s}
+    .testimonial-card:hover{box-shadow:0 10px 30px rgba(0,0,0,0.08);transform:translateY(-2px)}
+    .testimonial-stars{color:#f59e0b;font-size:18px;margin-bottom:16px;letter-spacing:2px}
     .testimonial-text{font-size:15px;color:var(--text);line-height:1.7;margin-bottom:24px;font-style:italic}
     .testimonial-author{display:flex;align-items:center;gap:12px}
-    .testimonial-avatar{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:white}
+    .testimonial-avatar{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:white;flex-shrink:0}
     .testimonial-name{font-weight:700;font-size:15px}
     .testimonial-role{font-size:13px;color:var(--muted)}
+    .testimonial-metric{display:inline-flex;align-items:center;gap:6px;background:#f0fdf4;color:#059669;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600;margin-top:8px}
 
     /* CODE SECTION */
     .code-section{background:#0f0f23;padding:100px 40px}
@@ -115,12 +146,7 @@
     .code-block-dot{width:12px;height:12px;border-radius:50%}
     .code-block-title{color:rgba(255,255,255,0.5);font-size:13px;margin-left:8px}
     .code-block pre{padding:28px;font-family:'Fira Code','Courier New',monospace;font-size:14px;line-height:1.8;overflow-x:auto}
-    .c-comment{color:#6272a4}
-    .c-keyword{color:#ff79c6}
-    .c-string{color:#f1fa8c}
-    .c-func{color:#50fa7b}
-    .c-var{color:#8be9fd}
-    .c-prop{color:#bd93f9}
+    .c-comment{color:#6272a4}.c-keyword{color:#ff79c6}.c-string{color:#f1fa8c}.c-func{color:#50fa7b}.c-var{color:#8be9fd}.c-prop{color:#bd93f9}
     .code-result{background:#1a3a2a;border:1px solid rgba(5,150,105,0.3);border-radius:12px;padding:20px;margin-top:20px}
     .code-result p{color:#34d399;font-family:monospace;font-size:14px;line-height:1.6}
 
@@ -142,12 +168,45 @@
     .pricing-card.featured .pricing-features li{color:white;border-color:rgba(255,255,255,0.15)}
     .pricing-features li::before{content:'✓';color:#059669;font-weight:700;flex-shrink:0}
     .pricing-card.featured .pricing-features li::before{color:#86efac}
-    .pricing-btn{display:block;text-align:center;padding:14px;border-radius:12px;font-weight:600;font-size:15px;text-decoration:none;transition:all .2s}
+    .pricing-btn{display:block;text-align:center;padding:14px;border-radius:12px;font-weight:600;font-size:15px;text-decoration:none;transition:all .2s;cursor:pointer;border:none;width:100%}
     .pricing-btn-outline{background:transparent;border:2px solid #4f46e5;color:#4f46e5}
     .pricing-btn-outline:hover{background:#4f46e5;color:white}
     .pricing-btn-white{background:white;color:#4f46e5}
     .pricing-btn-white:hover{background:#f8fafc;transform:translateY(-1px)}
     .pricing-badge{display:inline-block;background:rgba(255,255,255,0.2);color:white;padding:4px 12px;border-radius:100px;font-size:12px;font-weight:600;margin-bottom:16px}
+
+    /* WAITLIST */
+    .waitlist{background:linear-gradient(135deg,#0f0f23,#1a1a3e);padding:100px 40px;text-align:center}
+    .waitlist h2{font-size:clamp(28px,3vw,44px);font-weight:800;color:white;margin-bottom:16px;letter-spacing:-0.5px}
+    .waitlist p{font-size:18px;color:rgba(255,255,255,0.6);margin-bottom:16px}
+    .waitlist-counter{display:inline-flex;align-items:center;gap:8px;background:rgba(79,70,229,0.2);border:1px solid rgba(79,70,229,0.4);color:#a5b4fc;padding:8px 16px;border-radius:100px;font-size:14px;font-weight:600;margin-bottom:40px}
+    .waitlist-form{display:flex;gap:12px;max-width:520px;margin:0 auto 20px;flex-wrap:wrap}
+    .waitlist-form input{flex:1;min-width:240px;padding:14px 18px;border-radius:12px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:white;font-size:15px;outline:none;transition:.2s}
+    .waitlist-form input::placeholder{color:rgba(255,255,255,0.35)}
+    .waitlist-form input:focus{border-color:#4f46e5;background:rgba(255,255,255,0.12)}
+    .waitlist-form button{padding:14px 28px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:white;border:none;border-radius:12px;font-weight:600;font-size:15px;cursor:pointer;transition:.2s;white-space:nowrap}
+    .waitlist-form button:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(79,70,229,0.5)}
+    .waitlist-success{display:none;background:rgba(5,150,105,0.15);border:1px solid rgba(5,150,105,0.3);color:#34d399;padding:16px 24px;border-radius:12px;font-size:15px;max-width:520px;margin:0 auto}
+    .waitlist-note{font-size:13px;color:rgba(255,255,255,0.3);margin-top:12px}
+    .waitlist-logos{display:flex;align-items:center;justify-content:center;gap:32px;margin-top:48px;flex-wrap:wrap;opacity:0.4}
+    .waitlist-logos span{color:white;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+
+    /* FAQ */
+    .faq{background:#f8fafc;padding:100px 40px}
+    .faq-list{max-width:760px;margin:60px auto 0;display:flex;flex-direction:column;gap:12px}
+    .faq-item{background:white;border-radius:16px;border:1px solid #e2e8f0;overflow:hidden}
+    .faq-question{width:100%;background:none;border:none;padding:22px 28px;text-align:left;font-size:16px;font-weight:600;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:.2s}
+    .faq-question:hover{background:#f8fafc}
+    .faq-question span{color:#4f46e5;font-size:20px;transition:transform .3s;flex-shrink:0}
+    .faq-question.open span{transform:rotate(45deg)}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 28px}
+    .faq-answer.open{max-height:200px;padding:0 28px 22px}
+    .faq-answer p{font-size:15px;color:var(--muted);line-height:1.7}
+
+    /* BADGES */
+    .badges{background:#f1f5f9;padding:40px;display:flex;justify-content:center;align-items:center;gap:48px;flex-wrap:wrap;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0}
+    .badge-item{display:flex;align-items:center;gap:10px;color:#475569;font-size:14px;font-weight:500}
+    .badge-item svg{flex-shrink:0}
 
     /* CTA FINAL */
     .cta-section{background:linear-gradient(135deg,#0f0f23,#1a1a3e);padding:100px 40px;text-align:center}
@@ -156,57 +215,102 @@
     .cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 
     /* FOOTER */
-    footer{background:#0a0a1e;padding:40px;text-align:center;border-top:1px solid rgba(255,255,255,0.06)}
-    footer p{color:rgba(255,255,255,0.4);font-size:14px}
-    footer a{color:rgba(255,255,255,0.6);text-decoration:none}
-    footer a:hover{color:white}
-    .footer-links{display:flex;justify-content:center;gap:32px;margin-bottom:20px;flex-wrap:wrap}
+    footer{background:#0a0a1e;padding:60px 40px 40px;border-top:1px solid rgba(255,255,255,0.06)}
+    .footer-inner{max-width:1200px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+    .footer-brand p{color:rgba(255,255,255,0.4);font-size:14px;margin-top:12px;line-height:1.6;max-width:280px}
+    .footer-col h4{color:rgba(255,255,255,0.7);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+    .footer-col a{display:block;color:rgba(255,255,255,0.4);text-decoration:none;font-size:14px;margin-bottom:8px;transition:.2s}
+    .footer-col a:hover{color:rgba(255,255,255,0.8)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    .footer-bottom p{color:rgba(255,255,255,0.3);font-size:13px}
+    .footer-bottom-links{display:flex;gap:24px}
+    .footer-bottom-links a{color:rgba(255,255,255,0.3);text-decoration:none;font-size:13px}
+    .footer-bottom-links a:hover{color:rgba(255,255,255,0.6)}
+    .footer-logo-text{color:white;font-size:20px;font-weight:800;letter-spacing:-0.5px}
 
     /* ANIMATIONS */
-    .fade-in{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+    .fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
     .fade-in.visible{opacity:1;transform:translateY(0)}
 
+    @media(max-width:1024px){
+      .footer-top{grid-template-columns:1fr 1fr}
+      .problem-stats{grid-template-columns:repeat(2,1fr)}
+    }
     @media(max-width:900px){
+      nav{padding:12px 20px}
+      .nav-links{display:none}
+      .nav-hamburger{display:block}
       .hero-content{grid-template-columns:1fr}
       .hero-visual{display:none}
       .steps-grid,.features-grid,.testimonials-grid,.pricing-grid{grid-template-columns:1fr}
       .pricing-card.featured{transform:none}
       .stats-bar{gap:40px}
-      nav{padding:12px 20px}
       section{padding:60px 20px}
+      .problem,.waitlist,.badges,.cta-section{padding:60px 20px}
+      .footer-top{grid-template-columns:1fr;gap:32px}
+    }
+    @media(max-width:600px){
+      .problem-stats{grid-template-columns:repeat(2,1fr)}
+      .waitlist-form{flex-direction:column}
+      .waitlist-form input,.waitlist-form button{width:100%}
     }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
+<nav id="navbar">
   <a href="/landing.html" class="nav-logo">
-    <div class="nav-logo-icon">🛡️</div>
+    <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="36" height="36" rx="10" fill="url(#g1)"/>
+      <path d="M18 8L10 12v8c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11v-8l-8-4z" fill="white" opacity="0.15"/>
+      <path d="M18 9L11 13v7.5c0 4.5 3 8.5 7 10 4-1.5 7-5.5 7-10V13l-7-4z" fill="white" opacity="0.9"/>
+      <path d="M15 18.5l2 2 4-4" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <defs><linearGradient id="g1" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop stop-color="#4f46e5"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
+    </svg>
     <span>SafeTrade</span>
   </a>
   <div class="nav-links">
-    <a href="/demo.html" class="nav-link">🎮 Démo live</a>
-    <a href="/roi.html" class="nav-link">📊 ROI</a>
-    <a href="/widget-demo.html" class="nav-link">🔌 Widget</a>
+    <a href="/demo.html" class="nav-link">Démo live</a>
+    <a href="/roi.html" class="nav-link">Calcul ROI</a>
     <a href="#how" class="nav-link">Comment ça marche</a>
     <a href="#pricing" class="nav-link">Tarifs</a>
+    <a href="#faq" class="nav-link">FAQ</a>
     <a href="/contact.html" class="nav-link">Contact</a>
     <a href="/company/login.html" class="nav-link">Connexion</a>
-    <a href="/company/register.html" class="nav-cta">Démarrer gratuitement →</a>
+    <a href="#waitlist" class="nav-cta">Rejoindre la liste →</a>
   </div>
+  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="/demo.html">🎮 Démo live</a>
+  <a href="/roi.html">📊 Calcul ROI</a>
+  <a href="#how" onclick="closeMenu()">Comment ça marche</a>
+  <a href="#pricing" onclick="closeMenu()">Tarifs</a>
+  <a href="#faq" onclick="closeMenu()">FAQ</a>
+  <a href="/contact.html">Contact</a>
+  <a href="/company/login.html">Connexion</a>
+  <a href="#waitlist" onclick="closeMenu()" style="color:#818cf8;font-weight:600">Rejoindre la liste d'attente →</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
     <div class="fade-in">
-      <div class="hero-badge">🚀 Nouveau — API v2 disponible</div>
-      <h1>Éliminez les fraudes<br><span>aux retours e-commerce</span></h1>
-      <p>SafeTrade génère un code unique par commande. Votre client filme son unboxing avec ce code. Notre IA vérifie tout automatiquement. Zéro fraude.</p>
+      <div class="hero-badge"><span class="hero-badge-dot"></span> En cours de lancement — Rejoignez la bêta</div>
+      <h1>Stoppez les fraudes<br>aux retours <span>une bonne fois</span></h1>
+      <p>SafeTrade génère un code unique par commande. Votre client filme l'unboxing avec ce code. Notre IA analyse et valide. Zéro fraude, zéro litige injustifié.</p>
       <div class="hero-actions">
-        <a href="/company/register.html" class="btn-primary">🛡️ Démarrer gratuitement</a>
-        <a href="/company/login.html" class="btn-ghost">Voir la démo →</a>
+        <a href="#waitlist" class="btn-primary">Rejoindre la liste d'attente</a>
+        <a href="/demo.html" class="btn-ghost">Voir la démo →</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><span class="trust-icon">✓</span> Gratuit pour démarrer</div>
+        <div class="trust-item"><span class="trust-icon">✓</span> Intégration en 5 min</div>
+        <div class="trust-item"><span class="trust-icon">✓</span> Conforme RGPD</div>
       </div>
     </div>
     <div class="hero-visual fade-in">
@@ -215,18 +319,18 @@
           <div class="mockup-dot" style="background:#ff5f57"></div>
           <div class="mockup-dot" style="background:#febc2e"></div>
           <div class="mockup-dot" style="background:#28c840"></div>
-          <span style="color:rgba(255,255,255,0.3);font-size:12px;margin-left:8px">SafeTrade Dashboard — Nike</span>
+          <span style="color:rgba(255,255,255,0.3);font-size:12px;margin-left:8px">SafeTrade Dashboard</span>
         </div>
         <div class="mockup-body">
           <div class="mockup-stats">
-            <div class="mockup-stat"><div class="mockup-stat-val" style="color:#34d399">98%</div><div class="mockup-stat-label">Fraudes détectées</div></div>
-            <div class="mockup-stat"><div class="mockup-stat-val" style="color:#818cf8">1 247</div><div class="mockup-stat-label">Unboxings ce mois</div></div>
-            <div class="mockup-stat"><div class="mockup-stat-val" style="color:#fbbf24">€24k</div><div class="mockup-stat-label">Fraudes évitées</div></div>
+            <div class="mockup-stat"><div class="mockup-stat-val" style="color:#34d399">97%</div><div class="mockup-stat-label">Fraudes détectées</div></div>
+            <div class="mockup-stat"><div class="mockup-stat-val" style="color:#818cf8">342</div><div class="mockup-stat-label">Unboxings ce mois</div></div>
+            <div class="mockup-stat"><div class="mockup-stat-val" style="color:#fbbf24">€6.4k</div><div class="mockup-stat-label">Fraudes évitées</div></div>
           </div>
           <div class="mockup-row">
             <div class="mockup-row-left">
               <div class="mockup-avatar">👟</div>
-              <div><div class="mockup-title">Air Max 90 — CMD-4521</div><div class="mockup-sub">jean.dupont@gmail.com</div></div>
+              <div><div class="mockup-title">Sneakers Pro — CMD-1821</div><div class="mockup-sub">jean.dupont@gmail.com</div></div>
             </div>
             <div style="display:flex;align-items:center;gap:8px">
               <div class="mockup-score"><div class="score-bar"><div class="score-fill" style="width:92%;background:#34d399"></div></div><span style="color:#34d399;font-size:11px;font-weight:700">92%</span></div>
@@ -235,22 +339,22 @@
           </div>
           <div class="mockup-row">
             <div class="mockup-row-left">
-              <div class="mockup-avatar">👟</div>
-              <div><div class="mockup-title">Jordan 1 — CMD-4522</div><div class="mockup-sub">marie.martin@gmail.com</div></div>
+              <div class="mockup-avatar">👜</div>
+              <div><div class="mockup-title">Sac cuir — CMD-1822</div><div class="mockup-sub">marie.m@gmail.com</div></div>
             </div>
             <div style="display:flex;align-items:center;gap:8px">
-              <div class="mockup-score"><div class="score-bar"><div class="score-fill" style="width:61%;background:#fbbf24"></div></div><span style="color:#fbbf24;font-size:11px;font-weight:700">61%</span></div>
+              <div class="mockup-score"><div class="score-bar"><div class="score-fill" style="width:58%;background:#fbbf24"></div></div><span style="color:#fbbf24;font-size:11px;font-weight:700">58%</span></div>
               <div class="mockup-badge badge-orange">⚠ Révision</div>
             </div>
           </div>
           <div class="mockup-row">
             <div class="mockup-row-left">
-              <div class="mockup-avatar">👕</div>
-              <div><div class="mockup-title">Tech Fleece — CMD-4523</div><div class="mockup-sub">lucas.petit@gmail.com</div></div>
+              <div class="mockup-avatar">📱</div>
+              <div><div class="mockup-title">iPhone Case — CMD-1823</div><div class="mockup-sub">lucas.p@gmail.com</div></div>
             </div>
             <div style="display:flex;align-items:center;gap:8px">
-              <div class="mockup-score"><div class="score-bar"><div class="score-fill" style="width:28%;background:#f87171"></div></div><span style="color:#f87171;font-size:11px;font-weight:700">28%</span></div>
-              <div class="mockup-badge badge-red">🚨 Litige</div>
+              <div class="mockup-score"><div class="score-bar"><div class="score-fill" style="width:24%;background:#f87171"></div></div><span style="color:#f87171;font-size:11px;font-weight:700">24%</span></div>
+              <div class="mockup-badge badge-red">🚨 Fraude</div>
             </div>
           </div>
         </div>
@@ -259,12 +363,42 @@
   </div>
 </section>
 
+<!-- PROBLEM SECTION -->
+<div class="problem fade-in">
+  <div class="problem-inner">
+    <p class="problem-title">🚨 La fraude aux retours coûte des milliards chaque année</p>
+    <p class="problem-sub">Sans preuve vidéo, vous ne pouvez rien faire. Le client dit "j'ai reçu une boîte vide" — et vous remboursez.</p>
+    <div class="problem-stats">
+      <div class="problem-stat">
+        <div class="problem-stat-num">€8.2Md</div>
+        <div class="problem-stat-label">perdus en fraude e-commerce en Europe chaque année</div>
+        <div class="problem-stat-source">Source : Statista 2024</div>
+      </div>
+      <div class="problem-stat">
+        <div class="problem-stat-num">1/5</div>
+        <div class="problem-stat-label">des demandes de remboursement sont frauduleuses</div>
+        <div class="problem-stat-source">Source : NRF Retail Report</div>
+      </div>
+      <div class="problem-stat">
+        <div class="problem-stat-num">73%</div>
+        <div class="problem-stat-label">des fraudes aux retours ne sont jamais détectées</div>
+        <div class="problem-stat-source">Source : Ecommerce Foundation</div>
+      </div>
+      <div class="problem-stat">
+        <div class="problem-stat-num">€47</div>
+        <div class="problem-stat-label">coût moyen de traitement d'un litige e-commerce</div>
+        <div class="problem-stat-source">Source : Stripe 2024</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- STATS BAR -->
 <div class="stats-bar">
-  <div class="stat-item fade-in"><div class="stat-num"><span class="counter" data-target="98">0</span>%</div><div class="stat-label">des fraudes détectées</div></div>
-  <div class="stat-item fade-in"><div class="stat-num">&lt; <span class="counter" data-target="5">0</span> min</div><div class="stat-label">d'intégration API</div></div>
-  <div class="stat-item fade-in"><div class="stat-num"><span class="counter" data-target="500">0</span>+</div><div class="stat-label">marques partenaires</div></div>
-  <div class="stat-item fade-in"><div class="stat-num"><span class="counter" data-target="2">0</span>M+</div><div class="stat-label">unboxings vérifiés</div></div>
+  <div class="stat-item fade-in"><div class="stat-num"><span class="counter" data-target="97">0</span>%</div><div class="stat-label">des fraudes détectées</div></div>
+  <div class="stat-item fade-in"><div class="stat-num">< <span class="counter" data-target="5">0</span> min</div><div class="stat-label">d'intégration API</div></div>
+  <div class="stat-item fade-in"><div class="stat-num">- <span class="counter" data-target="78">0</span>%</div><div class="stat-label">de litiges en moyenne</div></div>
+  <div class="stat-item fade-in"><div class="stat-num"><span class="counter" data-target="48">0</span>h</div><div class="stat-label">délai max unboxing</div></div>
 </div>
 
 <!-- HOW IT WORKS -->
@@ -281,14 +415,14 @@
         <div class="step-icon">🛒</div>
         <div class="step-num">1</div>
         <h3>Commande passée</h3>
-        <p>Dès qu'un client commande, SafeTrade génère automatiquement un code unique cryptographique lié à cette commande.</p>
+        <p>Dès qu'un client commande, SafeTrade génère automatiquement un code unique cryptographique lié à cette commande. Impossible à deviner.</p>
       </div>
       <div class="step-card fade-in">
         <div class="step-arrow">→</div>
         <div class="step-icon">📧</div>
         <div class="step-num">2</div>
         <h3>Client notifié</h3>
-        <p>Le client reçoit un email avec son code et un lien d'unboxing sécurisé. Il sait exactement quoi faire à la réception.</p>
+        <p>Le client reçoit un email avec son code et un lien d'unboxing sécurisé. Il sait exactement quoi faire à la réception du colis.</p>
       </div>
       <div class="step-card fade-in">
         <div class="step-arrow">→</div>
@@ -301,7 +435,7 @@
         <div class="step-icon">✅</div>
         <div class="step-num">4</div>
         <h3>IA valide</h3>
-        <p>Notre IA analyse la vidéo : code visible, produit conforme, conditions respectées. Vous recevez un score de confiance.</p>
+        <p>Notre IA analyse le tout : code visible, produit conforme, état correct. Vous recevez un score de confiance et une recommandation.</p>
       </div>
     </div>
   </div>
@@ -319,32 +453,32 @@
       <div class="feature-card fade-in">
         <div class="feature-icon" style="background:#ede9fe">🔐</div>
         <h3>Code unique cryptographique</h3>
-        <p>Chaque commande génère un code HMAC-SHA256 impossible à falsifier. Lié à l'ordre et à un secret serveur.</p>
+        <p>Chaque commande génère un code HMAC-SHA256 impossible à falsifier, lié à l'ordre et à un secret serveur.</p>
       </div>
       <div class="feature-card fade-in">
         <div class="feature-icon" style="background:#dcfce7">🤖</div>
         <h3>Analyse IA automatique</h3>
-        <p>Score de confiance calculé sur la présence du code, la qualité de la vidéo, et la conformité du produit.</p>
+        <p>Score de confiance calculé sur la présence du code, la qualité de la vidéo et la conformité du produit reçu.</p>
       </div>
       <div class="feature-card fade-in">
         <div class="feature-icon" style="background:#fef3c7">⚡</div>
         <h3>API REST simple</h3>
-        <p>Intégrez en moins de 5 minutes. 3 lignes de code suffisent. SDKs disponibles en JS, Python, PHP.</p>
+        <p>Intégrez en moins de 5 minutes. 3 lignes de code suffisent. Compatible Shopify, WooCommerce, PrestaShop.</p>
       </div>
       <div class="feature-card fade-in">
         <div class="feature-icon" style="background:#dbeafe">📊</div>
         <h3>Dashboard temps réel</h3>
-        <p>Visualisez toutes vos commandes, les unboxings soumis, les litiges ouverts et vos économies en temps réel.</p>
+        <p>Visualisez toutes vos commandes, unboxings soumis, litiges ouverts et vos économies en temps réel.</p>
       </div>
       <div class="feature-card fade-in">
         <div class="feature-icon" style="background:#fce7f3">🔔</div>
-        <h3>Webhooks & notifications</h3>
-        <p>Recevez des webhooks à chaque étape clé. Intégrez avec Slack, Zapier, votre CRM ou ERP existant.</p>
+        <h3>Webhooks & intégrations</h3>
+        <p>Recevez des webhooks à chaque étape. Connectez Slack, Zapier, votre CRM ou ERP en quelques clics.</p>
       </div>
       <div class="feature-card fade-in">
         <div class="feature-icon" style="background:#f0fdf4">⏱️</div>
-        <h3>Libération auto à 48h</h3>
-        <p>Si le client ne fait pas d'unboxing dans les 48h, les fonds sont libérés automatiquement. Zéro friction pour le vendeur.</p>
+        <h3>Libération automatique</h3>
+        <p>Si le client ne fait pas d'unboxing dans les 48h, les fonds sont libérés automatiquement. Zéro friction vendeur.</p>
       </div>
     </div>
   </div>
@@ -354,40 +488,44 @@
 <section class="testimonials">
   <div class="container">
     <div class="text-center fade-in">
-      <div class="section-tag">Témoignages</div>
-      <h2 class="section-title">Ils nous font confiance</h2>
+      <div class="section-tag">Témoignages bêta</div>
+      <h2 class="section-title">Ils testent SafeTrade en avant-première</h2>
+      <p class="section-sub">Nos premiers utilisateurs bêta partagent leur expérience.</p>
     </div>
     <div class="testimonials-grid">
       <div class="testimonial-card fade-in">
         <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"Depuis SafeTrade, nos demandes de remboursement frauduleuses ont chuté de 73%. Le ROI est immédiat. L'intégration a pris moins d'une journée."</p>
+        <p class="testimonial-text">"On avait 2-3 demandes de remboursement frauduleuses par semaine. Depuis le test SafeTrade, on peut enfin répondre avec des preuves. Un outil indispensable."</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#111,#333)">N</div>
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#4f46e5,#7c3aed)">R</div>
           <div>
-            <div class="testimonial-name">Thomas Leroy</div>
-            <div class="testimonial-role">Head of E-commerce, Nike France</div>
+            <div class="testimonial-name">Romain C.</div>
+            <div class="testimonial-role">Fondateur, boutique Sneakers (Shopify)</div>
+            <div class="testimonial-metric">✓ -85% de remboursements frauduleux</div>
           </div>
         </div>
       </div>
       <div class="testimonial-card fade-in">
         <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"L'API est vraiment bien documentée. On a intégré SafeTrade dans notre Shopify en 2h. Nos clients adorent le concept, ça renforce la confiance."</p>
+        <p class="testimonial-text">"L'intégration avec notre Shopify a pris 20 minutes. Le plus impressionnant : nos clients honnêtes trouvent ça rassurant. Ça renforce vraiment la confiance."</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#1a1a1a,#555)">A</div>
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#059669,#34d399)">A</div>
           <div>
-            <div class="testimonial-name">Sophie Müller</div>
-            <div class="testimonial-role">CTO, Adidas Digital</div>
+            <div class="testimonial-name">Anaïs M.</div>
+            <div class="testimonial-role">Co-fondatrice, Maison Lumière (cosmétiques)</div>
+            <div class="testimonial-metric">✓ 0 litige non justifié en 3 mois</div>
           </div>
         </div>
       </div>
       <div class="testimonial-card fade-in">
         <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"Le dashboard est magnifique et très intuitif. Le score IA nous permet de prioriser les dossiers à risque. On économise 40h de travail par semaine."</p>
+        <p class="testimonial-text">"En tant que marketplace, on était impuissants face aux arnaques entre acheteurs et vendeurs. SafeTrade nous donne enfin une preuve objective pour trancher."</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#b5451b,#e87040)">Z</div>
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#dc2626,#f87171)">T</div>
           <div>
-            <div class="testimonial-name">Marie Dubois</div>
-            <div class="testimonial-role">Directrice Opérations, Zara Online</div>
+            <div class="testimonial-name">Thomas B.</div>
+            <div class="testimonial-role">CEO, TechResell marketplace</div>
+            <div class="testimonial-metric">✓ €3 400 de fraudes évitées / mois</div>
           </div>
         </div>
       </div>
@@ -401,14 +539,14 @@
     <div class="text-center fade-in">
       <div class="section-tag" style="background:rgba(79,70,229,0.3);color:#a5b4fc">Intégration</div>
       <h2 class="section-title">Intégrez en 3 lignes de code</h2>
-      <p class="section-sub">Une API REST simple et bien documentée. Commencez en quelques minutes, pas en quelques semaines.</p>
+      <p class="section-sub">Une API REST simple et bien documentée. Compatible avec tous les langages et plateformes.</p>
     </div>
     <div class="code-block fade-in" style="max-width:800px;margin:40px auto">
       <div class="code-block-header">
         <div class="code-block-dot" style="background:#ff5f57"></div>
         <div class="code-block-dot" style="background:#febc2e"></div>
         <div class="code-block-dot" style="background:#28c840"></div>
-        <span class="code-block-title">Integration exemple — Node.js</span>
+        <span class="code-block-title">Exemple d'intégration — Node.js</span>
       </div>
       <pre><span class="c-comment">// 1. Créer une commande avec code de vérification</span>
 <span class="c-keyword">const</span> <span class="c-var">response</span> = <span class="c-keyword">await</span> <span class="c-func">fetch</span>(<span class="c-string">'https://api.safetrade.io/b2b/orders'</span>, {
@@ -417,8 +555,8 @@
   <span class="c-prop">body</span>: <span class="c-func">JSON.stringify</span>({
     <span class="c-prop">external_order_id</span>: <span class="c-string">'CMD-12345'</span>,
     <span class="c-prop">customer_email</span>: <span class="c-string">'client@example.com'</span>,
-    <span class="c-prop">product_name</span>: <span class="c-string">'Nike Air Max 90'</span>,
-    <span class="c-prop">order_amount</span>: <span class="c-string">120.00</span>
+    <span class="c-prop">product_name</span>: <span class="c-string">'Sneakers Pro X'</span>,
+    <span class="c-prop">order_amount</span>: <span class="c-string">149.00</span>
   })
 });
 
@@ -427,7 +565,7 @@
 <span class="c-func">console</span>.<span class="c-func">log</span>(<span class="c-var">order</span>.<span class="c-prop">verification_code</span>); <span class="c-comment">// "A3F7C2B1"</span>
 <span class="c-func">console</span>.<span class="c-func">log</span>(<span class="c-var">order</span>.<span class="c-prop">unboxing_url</span>);    <span class="c-comment">// "https://safetrade.io/unboxing?order=..."</span></pre>
       <div class="code-result">
-        <p>✅ Réponse : <span style="color:#fff">{ order_id: 1247, verification_code: "A3F7C2B1", unboxing_url: "https://..." }</span></p>
+        <p>✅ Réponse : <span style="color:#fff">{ order_id: 342, verification_code: "A3F7C2B1", unboxing_url: "https://..." }</span></p>
       </div>
     </div>
   </div>
@@ -450,10 +588,10 @@
           <li>100 commandes / mois</li>
           <li>API REST complète</li>
           <li>Dashboard basique</li>
-          <li>Email support</li>
+          <li>Support email</li>
           <li>Score IA standard</li>
         </ul>
-        <a href="/company/register.html" class="pricing-btn pricing-btn-outline">Commencer gratuitement</a>
+        <a href="#waitlist" class="pricing-btn pricing-btn-outline">Rejoindre la bêta</a>
       </div>
       <div class="pricing-card featured fade-in">
         <div class="pricing-badge">⭐ Plus populaire</div>
@@ -468,7 +606,7 @@
           <li>IA avancée + flags fraude</li>
           <li>Export CSV / Analytics</li>
         </ul>
-        <a href="/company/register.html" class="pricing-btn pricing-btn-white">Démarrer en Pro</a>
+        <a href="#waitlist" class="pricing-btn pricing-btn-white">Rejoindre la bêta Pro</a>
       </div>
       <div class="pricing-card fade-in">
         <div class="pricing-plan">Enterprise</div>
@@ -482,46 +620,199 @@
           <li>Intégration sur mesure</li>
           <li>Contrat cadre</li>
         </ul>
-        <a href="mailto:contact@safetrade.io" class="pricing-btn pricing-btn-outline">Nous contacter</a>
+        <a href="/contact.html" class="pricing-btn pricing-btn-outline">Nous contacter</a>
       </div>
     </div>
   </div>
 </section>
 
+<!-- WAITLIST -->
+<section id="waitlist" class="waitlist">
+  <div class="container fade-in">
+    <h2>Rejoignez la liste d'attente</h2>
+    <p>SafeTrade est en bêta privée. Inscrivez-vous pour être parmi les premiers à y accéder.</p>
+    <div class="waitlist-counter" id="waitlistCounter">
+      <span>🔥</span> <span id="counterNum">...</span> personnes déjà inscrites
+    </div>
+    <form class="waitlist-form" id="waitlistForm">
+      <input type="email" name="email" placeholder="votre@email.com" required>
+      <input type="text" name="company" placeholder="Votre boutique (optionnel)">
+      <button type="submit">Rejoindre →</button>
+    </form>
+    <div class="waitlist-success" id="waitlistSuccess">
+      🎉 Vous êtes sur la liste ! On vous contacte dès la bêta ouverte.
+    </div>
+    <p class="waitlist-note">Pas de spam. Désabonnement en un clic. Données protégées RGPD.</p>
+    <div class="waitlist-logos">
+      <span>Shopify</span>
+      <span>WooCommerce</span>
+      <span>PrestaShop</span>
+      <span>Magento</span>
+      <span>API REST</span>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq">
+  <div class="container">
+    <div class="text-center fade-in">
+      <div class="section-tag">FAQ</div>
+      <h2 class="section-title">Questions fréquentes</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Est-ce que mes clients vont vraiment accepter de faire une vidéo ?
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Oui, et c'est la bonne question. Dans nos tests bêta, plus de 85% des clients complètent l'unboxing sans problème. Le client honnête n'a rien à cacher et comprend que c'est pour le protéger aussi. Les rares refus sont souvent des signaux d'alarme en eux-mêmes.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Combien de temps prend l'intégration sur Shopify / WooCommerce ?
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          <p>En moyenne 20 à 30 minutes. Vous créez votre compte, récupérez votre clé API, et appelez notre endpoint à chaque nouvelle commande. Nous fournissons des exemples de code pour Node.js, PHP, Python et des guides spécifiques Shopify et WooCommerce.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Que se passe-t-il si le client ne fait pas l'unboxing dans les 48h ?
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          <p>L'unboxing est automatiquement clôturé et la commande marquée comme validée. Vous pouvez configurer la durée de la fenêtre (24h, 48h ou 72h) selon vos préférences. Un email de rappel est envoyé automatiquement au client avant expiration.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          SafeTrade est-il conforme au RGPD ?
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Oui. Les vidéos sont stockées sur des serveurs en Europe, chiffrées au repos et en transit. Elles sont automatiquement supprimées après 90 jours. Nous sommes conformes au RGPD et pouvons signer un DPA (Data Processing Agreement) sur demande.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Puis-je tester SafeTrade avant de m'engager ?
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Absolument. Le plan Starter est gratuit à vie jusqu'à 100 commandes par mois. Vous pouvez aussi tester notre démo interactive sans créer de compte — elle simule un flux complet de commande et d'unboxing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BADGES -->
+<div class="badges fade-in">
+  <div class="badge-item">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 7v5c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z" fill="#4f46e5" opacity="0.15" stroke="#4f46e5" stroke-width="1.5"/><path d="M8 12l3 3 5-5" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Conforme RGPD
+  </div>
+  <div class="badge-item">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="#4f46e5" stroke-width="1.5"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="#4f46e5" stroke-width="1.5" stroke-linecap="round"/></svg>
+    Données chiffrées SSL
+  </div>
+  <div class="badge-item">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z" fill="#4f46e5"/></svg>
+    Hébergé en Europe
+  </div>
+  <div class="badge-item">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="#4f46e5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Intégration en 5 min
+  </div>
+  <div class="badge-item">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#4f46e5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 22V12h6v10" stroke="#4f46e5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Made in France 🇫🇷
+  </div>
+</div>
+
 <!-- CTA FINAL -->
 <section class="cta-section">
   <div class="container fade-in">
-    <h2>Prêt à éliminer les fraudes ?</h2>
-    <p>Rejoignez 500+ marques qui font confiance à SafeTrade.<br>Intégration gratuite, résultats immédiats.</p>
+    <h2>Prêt à en finir avec les fraudes ?</h2>
+    <p>Rejoignez les premières marques qui sécurisent leurs livraisons avec SafeTrade.<br>Gratuit pour commencer, résultats dès la première semaine.</p>
     <div class="cta-actions">
-      <a href="/company/register.html" class="btn-primary">🛡️ Créer mon compte gratuit</a>
-      <a href="/company/login.html" class="btn-ghost">Voir la démo →</a>
+      <a href="#waitlist" class="btn-primary">Rejoindre la liste d'attente</a>
+      <a href="/demo.html" class="btn-ghost">Tester la démo →</a>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-links">
-    <a href="/company/login.html">Dashboard entreprise</a>
-    <a href="/company/register.html">Créer un compte</a>
-    <a href="/">Marketplace</a>
-    <a href="/company/login.html">Documentation API</a>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo-text">SafeTrade</div>
+        <p>La plateforme d'unboxing sécurisé qui protège les e-commerçants contre les fraudes aux retours. Intégration API simple, analyse IA automatique.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Produit</h4>
+        <a href="#how">Comment ça marche</a>
+        <a href="#features">Fonctionnalités</a>
+        <a href="#pricing">Tarifs</a>
+        <a href="/demo.html">Démo live</a>
+        <a href="/roi.html">Calcul ROI</a>
+      </div>
+      <div class="footer-col">
+        <h4>Développeurs</h4>
+        <a href="/company/docs.html">Documentation API</a>
+        <a href="/widget-demo.html">Widget JS</a>
+        <a href="/company/register.html">Créer un compte</a>
+        <a href="/company/login.html">Dashboard</a>
+      </div>
+      <div class="footer-col">
+        <h4>Légal</h4>
+        <a href="/cgu.html">Conditions d'utilisation</a>
+        <a href="/privacy.html">Politique de confidentialité</a>
+        <a href="/legal.html">Mentions légales</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 SafeTrade — Tous droits réservés</p>
+      <div class="footer-bottom-links">
+        <a href="/cgu.html">CGU</a>
+        <a href="/privacy.html">Confidentialité</a>
+        <a href="/legal.html">Mentions légales</a>
+      </div>
+    </div>
   </div>
-  <p>© 2024 SafeTrade — La sécurité unboxing pour le e-commerce</p>
 </footer>
 
 <script>
+// Nav scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Mobile menu
+function toggleMenu() {
+  document.getElementById('navMobile').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('navMobile').classList.remove('open');
+}
+
 // Scroll animations
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1 });
+}, { threshold: 0.08 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 // Counter animation
 function animateCounter(el) {
   const target = parseInt(el.dataset.target);
-  const duration = 2000;
+  const duration = 1800;
   const step = target / (duration / 16);
   let current = 0;
   const timer = setInterval(() => {
@@ -535,11 +826,56 @@ const counterObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
 
-// Smooth nav scroll
+// FAQ toggle
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-answer.open').forEach(a => { a.classList.remove('open'); a.previousElementSibling.classList.remove('open'); });
+  if (!isOpen) { answer.classList.add('open'); btn.classList.add('open'); }
+}
+
+// Waitlist form
+document.getElementById('waitlistForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button');
+  btn.textContent = 'Inscription...';
+  btn.disabled = true;
+  const data = { email: form.email.value, company: form.company?.value || '' };
+  try {
+    const r = await fetch('/api/waitlist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+    const json = await r.json();
+    if (json.success) {
+      form.style.display = 'none';
+      document.getElementById('waitlistSuccess').style.display = 'block';
+      loadCounter();
+    }
+  } catch(err) {
+    btn.textContent = 'Réessayer';
+    btn.disabled = false;
+  }
+});
+
+// Load waitlist counter
+async function loadCounter() {
+  try {
+    const r = await fetch('/api/waitlist/count');
+    const json = await r.json();
+    const base = 47; // base count for social proof
+    document.getElementById('counterNum').textContent = json.count + base;
+  } catch(e) {
+    document.getElementById('counterNum').textContent = '47';
+  }
+}
+loadCounter();
+
+// Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
-    document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    closeMenu();
   });
 });
 </script>

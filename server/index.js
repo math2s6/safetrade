@@ -45,6 +45,7 @@ app.use('/api/b2b', require('./routes/b2b-api'));
 app.use('/api/company', require('./routes/b2b-dashboard'));
 app.use('/api/demo', require('./routes/demo'));
 app.use('/api/contact', require('./routes/contact'));
+app.use('/api/waitlist', require('./routes/waitlist'));
 
 // SPA fallback — serve actual HTML files if they exist, otherwise index.html
 app.get('*', (req, res) => {
