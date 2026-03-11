@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SafeTrade Business API — Documentation</title>
+  <title>UnboxProof Business API — Documentation</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #334155; }
@@ -145,7 +145,7 @@
 
 <nav>
   <div style="display:flex;align-items:center">
-    <a href="/" class="nav-logo">SafeTrade</a>
+    <a href="/" class="nav-logo">UnboxProof</a>
     <span class="nav-badge">Business API</span>
   </div>
   <div class="nav-links">
@@ -169,7 +169,7 @@
 <!-- QUICK START -->
 <div class="section" id="quickstart">
   <h2 class="section-title">Démarrage rapide</h2>
-  <p class="section-sub">Intégrez SafeTrade en 3 étapes simples</p>
+  <p class="section-sub">Intégrez UnboxProof en 3 étapes simples</p>
   <div class="steps-grid">
     <div class="step-card">
       <div class="step-num">1</div>
@@ -193,8 +193,8 @@
 app.post('/checkout/complete', async (req, res) => {
   const order = await createOrder(req.body);
 
-  <span class="comment">// Appel SafeTrade</span>
-  const safeRes = await fetch('https://safetrade.com/api/b2b/orders', {
+  <span class="comment">// Appel UnboxProof</span>
+  const safeRes = await fetch('https://unboxproof.com/api/b2b/orders', {
     method: 'POST',
     headers: {
       'Authorization': 'Bearer sk_live_votre_cle_api',
@@ -262,8 +262,8 @@ curl -X POST https://votre-domaine.com/api/b2b/orders \
   "order_id": 42,
   "external_order_id": "ORDER-2024-001",
   "verification_code": "A3F9",
-  "unboxing_url": "https://safetrade.com/unboxing-customer.html?code=A3F9&order=42",
-  "qr_code_url": "https://safetrade.com/api/b2b/orders/42/qr",
+  "unboxing_url": "https://unboxproof.com/unboxing-customer.html?code=A3F9&order=42",
+  "qr_code_url": "https://unboxproof.com/api/b2b/orders/42/qr",
   "message": "Commande créée. Partagez le verification_code ou unboxing_url avec votre client."
 }</code></pre>
       </div>
@@ -443,14 +443,14 @@ curl -X POST https://votre-domaine.com/api/b2b/orders \
           <li>Account manager dédié</li>
           <li>Conformité RGPD avancée</li>
         </ul>
-        <a href="mailto:enterprise@safetrade.com" class="btn-pricing btn-pricing-ghost">Nous contacter</a>
+        <a href="mailto:enterprise@unboxproof.com" class="btn-pricing btn-pricing-ghost">Nous contacter</a>
       </div>
     </div>
   </div>
 </div>
 
 <footer>
-  <p>© 2024 SafeTrade — <a href="/">Marketplace</a> · <a href="/company/login.html">Connexion</a> · <a href="/company/register.html">Inscription</a></p>
+  <p>© 2024 UnboxProof — <a href="/">Marketplace</a> · <a href="/company/login.html">Connexion</a> · <a href="/company/register.html">Inscription</a></p>
 </footer>
 
 <script>

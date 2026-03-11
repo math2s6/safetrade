@@ -99,8 +99,8 @@ router.post('/webhooks/test', async (req, res, next) => {
   try {
     const company = await db.get('SELECT webhook_url, name FROM companies WHERE id = ?', req.company.id);
     if (!company?.webhook_url) return res.status(400).json({ error: 'Aucun webhook URL configuré. Ajoutez-en un d\'abord.' });
-    const payload = { event: 'webhook.test', company: company.name, timestamp: new Date().toISOString(), data: { message: 'Test webhook SafeTrade ✅' } };
-    const response = await fetch(company.webhook_url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-SafeTrade-Event': 'webhook.test' }, body: JSON.stringify(payload), signal: AbortSignal.timeout(5000) }).catch(e => ({ ok: false, status: 0, statusText: e.message }));
+    const payload = { event: 'webhook.test', company: company.name, timestamp: new Date().toISOString(), data: { message: 'Test webhook UnboxProof ✅' } };
+    const response = await fetch(company.webhook_url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-UnboxProof-Event': 'webhook.test' }, body: JSON.stringify(payload), signal: AbortSignal.timeout(5000) }).catch(e => ({ ok: false, status: 0, statusText: e.message }));
     res.json({ sent: true, url: company.webhook_url, status: response.status, success: response.ok });
   } catch(e) { next(e); }
 });

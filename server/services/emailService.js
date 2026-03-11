@@ -31,7 +31,7 @@ async function sendEmail(to, subject, html) {
   try {
     const t = await getTransporter();
     const info = await t.sendMail({
-      from: process.env.SMTP_FROM || '"SafeTrade" <noreply@safetrade.io>',
+      from: process.env.SMTP_FROM || '"UnboxProof" <noreply@unboxproof.io>',
       to, subject, html
     });
     const previewUrl = nodemailer.getTestMessageUrl(info);
@@ -62,7 +62,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .footer{padding:24px 40px;border-top:1px solid #e2e8f0;text-align:center;color:#94a3b8;font-size:13px}
 </style></head>
 <body><div class="container">
-  <div class="header"><h1>🛡️ SafeTrade</h1><p>Votre achat est protégé</p></div>
+  <div class="header"><h1>🛡️ UnboxProof</h1><p>Votre achat est protégé</p></div>
   <div class="body">
     <p>Bonjour <strong>${customerName || 'cher client'}</strong>,</p>
     <p>Votre commande <strong>"${productName}"</strong> chez <strong>${companyName}</strong> est en route ! Pour valider la réception et protéger votre achat, vous devez réaliser un <strong>unboxing sécurisé</strong>.</p>
@@ -80,7 +80,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <a href="${unboxingUrl}" class="btn">🎥 Faire mon unboxing sécurisé →</a>
     <p style="color:#64748b;font-size:14px;">Ce lien est valable 48h après réception.</p>
   </div>
-  <div class="footer">Propulsé par <strong>SafeTrade</strong> — <a href="${process.env.APP_URL || 'https://safetrade.io'}" style="color:#4f46e5">safetrade.io</a></div>
+  <div class="footer">Propulsé par <strong>UnboxProof</strong> — <a href="${process.env.APP_URL || 'https://unboxproof.io'}" style="color:#4f46e5">unboxproof.io</a></div>
 </div></body></html>`;
   return sendEmail(customerEmail, `🛡️ Votre code unboxing pour "${productName}" — ${companyName}`, html);
 }
@@ -103,11 +103,11 @@ body{font-family:-apple-system,sans-serif;background:#f8fafc;margin:0;padding:20
     <div class="info-box">
       <p style="margin:0"><strong>Produit :</strong> ${productName}<br>
       <strong>Référence :</strong> #${orderId}<br>
-      <strong>Protection :</strong> 🛡️ SafeTrade Unboxing</p>
+      <strong>Protection :</strong> 🛡️ UnboxProof Unboxing</p>
     </div>
     <p>Vous recevrez un email avec votre code d'unboxing dès que votre colis sera expédié.</p>
   </div>
-  <div class="footer">Propulsé par <strong>SafeTrade</strong></div>
+  <div class="footer">Propulsé par <strong>UnboxProof</strong></div>
 </div></body></html>`;
   return sendEmail(customerEmail, `✅ Commande confirmée — ${productName}`, html);
 }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SafeTrade — Dashboard</title>
+  <title>UnboxProof — Dashboard</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -239,7 +239,7 @@
   <div class="login-card">
     <div class="login-logo">
       <div class="login-logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7l-9-5z"/></svg></div>
-      <span style="font-size:20px;font-weight:800;color:#0f172a">SafeTrade</span>
+      <span style="font-size:20px;font-weight:800;color:#0f172a">UnboxProof</span>
     </div>
     <div class="login-tabs">
       <div class="login-tab active" onclick="switchLoginTab('login',this)">Connexion</div>
@@ -285,7 +285,7 @@
     <div class="sidebar-header">
       <a href="/" class="sidebar-logo">
         <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7l-9-5z"/></svg></div>
-        <span class="logo-text">SafeTrade</span>
+        <span class="logo-text">UnboxProof</span>
         <span class="logo-badge">B2B</span>
       </a>
     </div>
@@ -465,8 +465,8 @@ function showTab(name, el) {
     overview: ['Tableau de bord', "Vue d'ensemble de votre activité"],
     orders: ['Commandes', 'Gérez et suivez toutes vos commandes'],
     unboxings: ['Unboxings à réviser', 'Vidéos et photos soumises par vos clients'],
-    apikeys: ['Clés API', 'Gérez vos clés d\'accès à l\'API SafeTrade'],
-    docs: ['Documentation API', 'Intégrez SafeTrade à votre boutique'],
+    apikeys: ['Clés API', 'Gérez vos clés d\'accès à l\'API UnboxProof'],
+    docs: ['Documentation API', 'Intégrez UnboxProof à votre boutique'],
     settings: ['Paramètres & Webhooks', 'Configurez votre compte et notifications']
   };
   const [title, sub] = titles[name] || ['Dashboard', ''];
@@ -848,9 +848,9 @@ async function loadSettings() {
       <div class="section-header"><span class="section-title">Webhook</span></div>
       <div class="settings-section">
         <div class="settings-label">URL de notification</div>
-        <div class="settings-desc">SafeTrade enverra un POST à cette URL à chaque événement (unboxing soumis, commande complétée...)</div>
+        <div class="settings-desc">UnboxProof enverra un POST à cette URL à chaque événement (unboxing soumis, commande complétée...)</div>
         <div style="display:flex;gap:8px">
-          <input class="input" id="webhookUrl" value="${data?.webhook_url||''}" placeholder="https://votre-boutique.com/api/safetrade-webhook" />
+          <input class="input" id="webhookUrl" value="${data?.webhook_url||''}" placeholder="https://votre-boutique.com/api/unboxproof-webhook" />
           <button class="btn btn-primary" onclick="saveWebhook()">Sauvegarder</button>
         </div>
         ${data?.webhook_url ? `<button class="btn btn-ghost btn-sm" style="margin-top:10px" onclick="testWebhook()">🔔 Tester le webhook</button>` : ''}
@@ -880,7 +880,7 @@ function renderDocs() {
     <div class="section-card" style="max-width:720px">
       <div class="section-header"><span class="section-title">Intégration API</span></div>
       <div class="docs-section">
-        <p style="font-size:13px;color:var(--muted);margin-bottom:20px">Intégrez SafeTrade à votre boutique en quelques lignes de code. Authentifiez-vous avec votre clé API dans le header <code style="background:var(--bg);padding:2px 6px;border-radius:4px;font-size:12px">Authorization: Bearer sk_live_...</code></p>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:20px">Intégrez UnboxProof à votre boutique en quelques lignes de code. Authentifiez-vous avec votre clé API dans le header <code style="background:var(--bg);padding:2px 6px;border-radius:4px;font-size:12px">Authorization: Bearer sk_live_...</code></p>
 
         <div class="docs-endpoint">
           <div class="docs-endpoint-header">

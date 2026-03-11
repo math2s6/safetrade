@@ -14,7 +14,7 @@ async function sendWebhook(companyId, event, data) {
 
     const res = await fetch(company.webhook_url, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-SafeTrade-Event': event, 'X-SafeTrade-Version': '1.0' },
+      headers: { 'Content-Type': 'application/json', 'X-UnboxProof-Event': event, 'X-UnboxProof-Version': '1.0' },
       body: JSON.stringify(payload),
       signal: AbortSignal.timeout(5000)
     });

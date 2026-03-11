@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Litige — SafeTrade</title>
+  <title>Litige — UnboxProof</title>
   <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
 
 <nav class="navbar">
-  <a href="/" class="nav-logo">SafeTrade</a>
+  <a href="/" class="nav-logo">UnboxProof</a>
   <div class="nav-actions">
     <div id="nav-auth" style="display:flex;gap:0.5rem">
       <a href="/login.html" class="btn btn-ghost btn-sm">Connexion</a>
@@ -83,7 +83,7 @@
   }
 
   function renderDisputeForm(order) {
-    document.title = 'Ouvrir un litige — SafeTrade';
+    document.title = 'Ouvrir un litige — UnboxProof';
     document.getElementById('dispute-container').innerHTML = `
       <div class="detail-layout">
         <div>
@@ -174,7 +174,7 @@
   }
 
   function renderDisputeThread(d) {
-    document.title = `Litige #${d.id} — SafeTrade`;
+    document.title = `Litige #${d.id} — UnboxProof`;
     const isBuyer = d.buyer_id === currentUser.id;
     const isSeller = d.seller_id === currentUser.id;
     const photos = d.unboxing?.photo_urls || [];

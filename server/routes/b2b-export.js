@@ -37,7 +37,7 @@ router.get('/orders.csv', async (req, res) => {
   const csv = [headers, ...rows].map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\n');
 
   res.setHeader('Content-Type', 'text/csv; charset=utf-8');
-  res.setHeader('Content-Disposition', `attachment; filename="safetrade-orders-${new Date().toISOString().slice(0,10)}.csv"`);
+  res.setHeader('Content-Disposition', `attachment; filename="unboxproof-orders-${new Date().toISOString().slice(0,10)}.csv"`);
   res.send('\uFEFF' + csv);
 });
 

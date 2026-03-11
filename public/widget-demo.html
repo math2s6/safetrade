@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Widget SafeTrade — Exemple d'intégration</title>
+  <title>Widget UnboxProof — Exemple d'intégration</title>
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f1f5f9;padding:0}
@@ -49,7 +49,7 @@
 <body>
 
 <div class="top-bar">
-  📌 Ceci est une <strong>démo d'intégration du widget SafeTrade</strong> — <a href="/landing.html">En savoir plus →</a>
+  📌 Ceci est une <strong>démo d'intégration du widget UnboxProof</strong> — <a href="/landing.html">En savoir plus →</a>
 </div>
 
 <nav class="shop-nav">
@@ -94,8 +94,8 @@
 
       <div class="divider"></div>
 
-      <!-- ✅ Widget SafeTrade — intégration en 1 ligne -->
-      <div data-safetrade-order="1"></div>
+      <!-- ✅ Widget UnboxProof — intégration en 1 ligne -->
+      <div data-unboxproof-order="1"></div>
 
     </div>
   </div>
@@ -107,22 +107,22 @@
       <button class="copy-btn" onclick="copyCode()">Copier</button>
     </div>
     <p>Copiez-collez ce code dans votre page produit, juste après le bouton "Ajouter au panier"</p>
-    <pre id="code-block">&lt;!-- 1. Chargez le widget SafeTrade (1 fois par page) --&gt;
-&lt;script src="https://safetrade.io/widget.js"&gt;&lt;/script&gt;
+    <pre id="code-block">&lt;!-- 1. Chargez le widget UnboxProof (1 fois par page) --&gt;
+&lt;script src="https://unboxproof.io/widget.js"&gt;&lt;/script&gt;
 
 &lt;!-- 2. Placez le bouton où vous voulez --&gt;
-&lt;div data-safetrade-order="{{ order.id }}"&gt;&lt;/div&gt;
+&lt;div data-unboxproof-order="{{ order.id }}"&gt;&lt;/div&gt;
 
 &lt;!-- 3. Initialisez avec votre clé API --&gt;
 &lt;script&gt;
-  SafeTrade.init({ apiKey: 'sk_live_votre_cle_ici' });
+  UnboxProof.init({ apiKey: 'sk_live_votre_cle_ici' });
 &lt;/script&gt;</pre>
   </div>
 </div>
 
 <script src="/widget.js"></script>
 <script>
-SafeTrade.init({ apiKey: 'demo' });
+UnboxProof.init({ apiKey: 'demo' });
 
 function copyCode() {
   const code = document.getElementById('code-block').textContent;

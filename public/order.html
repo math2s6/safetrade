@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Commande — SafeTrade</title>
+  <title>Commande — UnboxProof</title>
   <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
 
 <nav class="navbar">
-  <a href="/" class="nav-logo">SafeTrade</a>
+  <a href="/" class="nav-logo">UnboxProof</a>
   <div class="nav-actions">
     <div id="nav-auth" style="display:flex;gap:0.5rem">
       <a href="/login.html" class="btn btn-ghost btn-sm">Connexion</a>
@@ -92,7 +92,7 @@
     try {
       const order = await API.get(`/api/orders/${orderId}`);
       orderData = order;
-      document.title = `Commande #${order.id} — SafeTrade`;
+      document.title = `Commande #${order.id} — UnboxProof`;
       renderOrder(order);
     } catch (e) {
       document.getElementById('order-container').innerHTML = `<div class="empty-state"><p style="color:var(--danger)">${e.message}</p></div>`;
