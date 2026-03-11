@@ -80,11 +80,25 @@ body{font-family:-apple-system,sans-serif;background:#f1f5f9;padding:24px}
 // All routes below require API key
 router.use(requireApiKey);
 
+const PLAN_LIMITS = { starter: 100, pro: 1000, enterprise: Infinity };
+
 router.post('/orders', async (req, res, next) => {
   try {
     const { external_order_id, customer_email, customer_name, product_name, product_description, order_amount, currency, tracking_number, carrier, webhook_url } = req.body;
     if (!external_order_id || !customer_email || !product_name || !order_amount) {
       return res.status(400).json({ error: 'Champs requis: external_order_id, customer_email, product_name, order_amount' });
+    }
+
+    // Check monthly plan limit
+    const company = await db.get('SELECT plan, monthly_orders_used FROM companies WHERE id = ?', req.company.id);
+    const limit = PLAN_LIMITS[company?.plan] ?? 100;
+    if ((company?.monthly_orders_used || 0) >= limit) {
+      return res.status(429).json({
+        error: `Limite mensuelle atteinte (${limit} commandes/${company.plan}). Passez au plan supérieur pour continuer.`,
+        plan: company.plan,
+        used: company.monthly_orders_used,
+        limit
+      });
     }
 
     const { code, hash } = generateVerificationCode(Date.now() + Math.random());

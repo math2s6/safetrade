@@ -58,7 +58,7 @@ router.put('/companies/:id/plan', async (req, res, next) => {
   try {
     const { plan } = req.body;
     if (!['starter', 'pro', 'enterprise'].includes(plan)) return res.status(400).json({ error: 'Plan invalide' });
-    await db.run("UPDATE companies SET plan=?, updated_at=datetime('now') WHERE id=?", plan, req.params.id);
+    await db.run('UPDATE companies SET plan=? WHERE id=?', plan, req.params.id);
     res.json({ message: 'Plan mis à jour' });
   } catch(e) { next(e); }
 });
@@ -67,7 +67,7 @@ router.put('/companies/:id/toggle', async (req, res, next) => {
   try {
     const company = await db.get('SELECT is_active FROM companies WHERE id = ?', req.params.id);
     if (!company) return res.status(404).json({ error: 'Introuvable' });
-    await db.run("UPDATE companies SET is_active=?, updated_at=datetime('now') WHERE id=?", company.is_active ? 0 : 1, req.params.id);
+    await db.run('UPDATE companies SET is_active=? WHERE id=?', company.is_active ? 0 : 1, req.params.id);
     res.json({ message: company.is_active ? 'Compte désactivé' : 'Compte réactivé' });
   } catch(e) { next(e); }
 });

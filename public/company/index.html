@@ -549,6 +549,25 @@ async function loadOverview() {
       </div>
     </div>
 
+    ${stats.monthly_limit ? (() => {
+      const pct = Math.min(100, Math.round(stats.monthly_used / stats.monthly_limit * 100));
+      const isNearLimit = pct >= 80;
+      const color = pct >= 100 ? '#ef4444' : pct >= 80 ? '#f59e0b' : '#10b981';
+      return `<div style="background:white;border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin-bottom:20px;display:flex;align-items:center;gap:20px">
+        <div style="flex:1">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <span style="font-size:13px;font-weight:600;color:var(--text)">Utilisation mensuelle — Plan ${(company.plan||'Starter').charAt(0).toUpperCase()+(company.plan||'starter').slice(1)}</span>
+            <span style="font-size:13px;font-weight:700;color:${color}">${stats.monthly_used} / ${stats.monthly_limit} commandes</span>
+          </div>
+          <div style="height:6px;background:#e2e8f0;border-radius:99px;overflow:hidden">
+            <div style="width:${pct}%;height:100%;background:${color};border-radius:99px;transition:width .5s"></div>
+          </div>
+          ${isNearLimit ? `<div style="font-size:12px;color:${color};margin-top:6px;font-weight:500">${pct >= 100 ? '⛔ Limite atteinte — passez au plan supérieur pour débloquer' : `⚠️ ${100 - pct}% de quota restant ce mois`}</div>` : ''}
+        </div>
+        ${isNearLimit ? `<a href="/#pricing" target="_blank" style="flex-shrink:0;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:white;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap">Upgrader →</a>` : ''}
+      </div>`;
+    })() : ''}
+
     <div class="charts-row">
       <div class="chart-card">
         <div class="chart-title">Activité par statut</div>

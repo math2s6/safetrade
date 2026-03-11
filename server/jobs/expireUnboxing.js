@@ -80,11 +80,22 @@ body{font-family:-apple-system,sans-serif;background:#f1f5f9;padding:24px}
   }
 }
 
+async function resetMonthlyCounters() {
+  try {
+    await db.run('UPDATE companies SET monthly_orders_used = 0');
+    console.log('[CRON] Compteurs mensuels réinitialisés');
+  } catch(e) {
+    console.error('[CRON] Erreur reset mensuel:', e.message);
+  }
+}
+
 function startCron() {
   cron.schedule('*/15 * * * *', () => runExpiry().catch(console.error));
   cron.schedule('0 * * * *', () => runUnboxingReminders().catch(console.error));
+  cron.schedule('0 0 1 * *', () => resetMonthlyCounters().catch(console.error)); // 1er du mois à minuit
   console.log('[CRON] Vérification expiration unboxing démarrée (toutes les 15min)');
   console.log('[CRON] Rappels unboxing démarrés (toutes les heures)');
+  console.log('[CRON] Reset compteurs mensuels actif (1er du mois)');
   runExpiry().catch(console.error);
 }
 
