@@ -60,12 +60,15 @@ app.get('*', (req, res) => {
 
 app.use(errorHandler);
 
+const db = require('./db');
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`\nMarketplace démarrée sur http://localhost:${PORT}`);
-  console.log(`Admin: admin@marketplace.com / admin123`);
-  console.log(`Alice: alice@example.com / user123`);
-  console.log(`Bob:   bob@example.com / user123\n`);
-});
 
-startCron();
+db.ready.then(() => {
+  app.listen(PORT, () => {
+    console.log(`\nMarketplace démarrée sur http://localhost:${PORT}`);
+    console.log(`Admin: admin@marketplace.com / admin123`);
+    console.log(`Alice: alice@example.com / user123`);
+    console.log(`Bob:   bob@example.com / user123\n`);
+  });
+  startCron();
+});
