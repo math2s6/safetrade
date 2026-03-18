@@ -51,6 +51,10 @@ app.use('/api/admin/b2b', require('./routes/admin-b2b'));
 app.use('/api/company/billing', require('./routes/billing'));
 app.use('/api/webhooks/stripe', require('./routes/stripe-webhook'));
 
+// Company dashboard directory
+app.get('/company', (req, res) => res.redirect('/company/index.html'));
+app.get('/company/', (req, res) => res.sendFile(path.join(__dirname, '../public/company/index.html')));
+
 // Redirect root to B2B landing page
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public', 'landing.html'));

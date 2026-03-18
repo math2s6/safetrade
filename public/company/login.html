@@ -287,7 +287,7 @@
 <script>
   // Redirect if already logged in
   if (localStorage.getItem('company_token')) {
-    window.location.href = '/company/';
+    window.location.href = '/company/index.html';
   }
 
   document.getElementById('login-form').addEventListener('submit', async (e) => {
@@ -311,7 +311,7 @@
       if (!res.ok) throw new Error(data.error || 'Erreur de connexion');
       localStorage.setItem('company_token', data.token);
       localStorage.setItem('company_data', JSON.stringify(data.company));
-      window.location.href = '/company/';
+      window.location.href = '/company/index.html';
     } catch (err) {
       errEl.textContent = err.message;
       errEl.style.display = 'block';
